@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "title": "Nintendo Switch - Neon Red/Neon Blue",
+    "price": 1600.99,
+    "image": "products/switch.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Nintendo Switch Pro Controller - Black",
+    "price": 180,
+    "image": "products/pro-controller.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Sonic Mania Plus (Nintendo Switch)",
+    "price": 165,
+    "image": "products/sonicmania.jpg"
+  },
+  {
+    "id": 4,
+    "title": "AmazonBasics Carrying Case for Nintendo Switch - Red",
+    "price": 89.99,
+    "image": "products/switchcase.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Minecraft (Nintendo Switch)",
+    "price": 120,
+    "image": "products/minecraft.jpg"
+  },
+  {
+    "id": 6,
+    "title": "AmazonBasics Dual Voltage AC Charger for Nintendo Switch (Supports TV Mode), Black",
+    "price": 45.3,
+    "image": "products/charger.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Mario Kart 8 Deluxe (Nintendo Switch)",
+    "price": 209.2,
+    "image": "products/mariokart.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Joy-Con Pair - Neon Green/Neon Pink (Nintendo Switch)",
+    "price": 235.5,
+    "image": "products/joycons.jpg"
+  }
+]
