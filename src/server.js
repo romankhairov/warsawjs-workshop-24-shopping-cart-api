@@ -13,7 +13,7 @@ morgan.token("id", function getId(req) {
   return req.id;
 });
 
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors({ origin: ["http://localhost:3000", "http://localhost"] }));
 
 app.use(morgan("dev"));
 
@@ -24,14 +24,62 @@ app.use(
   })
 );
 
+app.use(addRequestId);
+
 app.get("/health", function(req, res) {
   res.status(200).send({ status: "OK" });
 });
 
-app.use(addRequestId);
+app.get("/products", function(req, res) {
+  res.status(200).send({ products });
+});
+
+app.post("/order/:orderNumber/deliveryMethod", function(req, res) {
+  const order = orderRepository.find(req.params.orderNumber);
+
+  if (typeof order === "undefined") {
+    return res.status(404).send({ error: "Not found." });
+  }
+
+  order.deliveryMethod = req.body.deliveryMethod;
+  orderRepository.save(order);
+
+  res.status(200).send({ status: "OK" });
+});
+
+app.post("/order/:orderNumber/deliveryAddress", function(req, res) {
+  const order = orderRepository.find(req.params.orderNumber);
+
+  if (typeof order === "undefined") {
+    return res.status(404).send({ error: "Not found." });
+  }
+
+  order.deliveryAddress = req.body;
+  orderRepository.save(order);
+
+  res.status(200).send({ status: "OK" });
+});
+
+app.post("/order/:orderNumber/submit", function(req, res) {
+  const order = orderRepository.find(req.params.orderNumber);
+
+  if (typeof order === "undefined") {
+    return res.status(404).send({ error: "Not found." });
+  }
+
+  order.status = "SUBMITTED";
+  orderRepository.save(order);
+
+  res.status(200).send({ status: "OK" });
+});
 
 app.get("/order/:orderNumber", function(req, res) {
   const order = orderRepository.find(req.params.orderNumber);
+
+  if (typeof order === "undefined") {
+    return res.status(404).send({ error: "Not found." });
+  }
+
   res.status(200).send(order);
 });
 

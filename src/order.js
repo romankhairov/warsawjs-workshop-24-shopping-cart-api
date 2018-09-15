@@ -10,9 +10,12 @@ const orderRepository = {
   },
   create: (products = []) => {
     const orderNumber = getNextOrderNumber();
-    orders[orderNumber] = { orderNumber, products };
+    orders[orderNumber] = { status: 'NEW', orderNumber, products };
 
     return orders[orderNumber];
+  },
+  save: order => {
+    orders[order.orderNumber] = order;
   }
 };
 
